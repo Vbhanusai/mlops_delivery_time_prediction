@@ -1,56 +1,38 @@
-# Food Delivery Time Prediction 🛵
-
+# End-to-End MLOps System for Food Delivery Time Prediction
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/zenml)](https://pypi.org/project/zenml/)
 
-## 📘 Overview
+## Overview
 
-This project focuses on predicting food delivery times using data, which includes various factors like distance, weather, traffic, and more. This challenge is perfect for machine learning practitioners interested in logistics, operations research, and predictive modeling.
+This project implements an **End-to-End MLOps** pipeline for predicting food delivery times based on various influencing factors such as distance, weather, and traffic. It leverages machine learning and MLOps frameworks to automate data ingestion, model training, evaluation, deployment, and continuous prediction. The system is designed to scale and integrate into real-world business applications.
 
----
+## Tech Stack
 
-## 📂 Dataset Description
+- ### Tools and Frameworks
+    [![ZenML](https://img.shields.io/badge/ZenML-512990?style=for-the-badge&logo=zenml&logoColor=white)](https://www.zenml.io/)
+    [![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)](https://mlflow.org/)
+    [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 
-The dataset contains key variables influencing delivery time, making it a robust foundation for developing predictive models.
+- ### Libraries
+    [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/stable/)
+    [![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
+    [![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 
-### **Key Features**
+## Dataset Description
 
-- **`Order_ID`**: Unique identifier for each order.
-- **`Distance_km`**: Delivery distance in kilometers.
-- **`Weather`**: Weather conditions during delivery (e.g., Clear, Rainy, Snowy, Foggy, Windy).
-- **`Traffic_Level`**: Traffic conditions categorized as **Low**, **Medium**, or **High**.
-- **`Time_of_Day`**: Delivery time categorized as **Morning**, **Afternoon**, **Evening**, or **Night**.
-- **`Vehicle_Type`**: Type of vehicle used for delivery (e.g., Bike, Scooter, Car).
-- **`Preparation_Time_min`**: Time required to prepare the order (in minutes).
-- **`Courier_Experience_yrs`**: Courier's experience in years.
-- **`Delivery_Time_min`**: Total delivery time (in minutes). This is the **target variable** for prediction.
+[![Static Badge](https://img.shields.io/badge/Dataset-20BEFF?style=for-the-badge&logo=kaggle&logoSize=auto&labelColor=grey)](https://www.kaggle.com/datasets/denkuznetz/food-delivery-time-prediction)
 
----
+The dataset contains key variables that influence delivery time, making it a robust foundation for developing predictive models.
 
-### 📥 Dataset Access
+## Exploratory Data Analysis (EDA)+Modeling
 
-The dataset for this project is available on Kaggle. You can access it using the following link: [Food Delivery Time Prediction Dataset](https://www.kaggle.com/datasets/denkuznetz/food-delivery-time-prediction).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1y4CmaC0UA32f9tC9lWU_i699RxPrhF-K?usp=sharing)
+[![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/vbhanu5ai/delivery-time-estimation-eda-modeling)
 
----
+Prior to deployment, Exploratory Data Analysis (EDA) will be performed in a Jupyter Notebook to understand the data distributions, detect anomalies, and identify relationships among features.
 
-## ⚙️ MLOps Workflow
+## Results
 
-This project is structured as an **MLOps project**, aiming to productionize the predictive model. Prior to deployment, **Exploratory Data Analysis (EDA)** will be performed in a Jupyter Notebook to understand data distributions, detect anomalies, and identify relationships among features.
 
-We are building an end-to-end pipeline for continuously predicting and deploying the machine learning model, alongside a data application that utilizes the latest deployed model for business consumption. 
-
-The pipeline can be deployed to the cloud, scale according to our needs, and ensure tracking of parameters and data through every pipeline run. It includes raw data input, features, results, the machine learning model and parameters, and prediction outputs. ZenML simplifies building such a pipeline effectively.
-
----
-
-## 📔 Notebooks for EDA and Modeling
-
-- **Kaggle Notebook**: [Delivery Time Estimation - EDA & Modeling](https://www.kaggle.com/code/vbhanu5ai/delivery-time-estimation-eda-modeling)
-
-- **Google Colab Notebook**: [EDA & Modeling Notebook](https://colab.research.google.com/drive/1y4CmaC0UA32f9tC9lWU_i699RxPrhF-K?usp=sharing)
-
----
-
-## 📊 Results and Model Evaluation
 
 Below are the evaluation metrics for different models tested during this project:
 
@@ -62,19 +44,26 @@ Below are the evaluation metrics for different models tested during this project
 
 ### Best Model
 
-**Linear Regression** was selected as the best-performing model due to its highest R² Score and the lowest RMSE and MAE values.
----
-## 💻 System Requirements
+_**Linear Regression** was selected as the best-performing model due to its highest R² score and the lowest RMSE and MAE values._
+
+## MLOPS 
+
+There is an end-to-end pipeline for continuously predicting and deploying the machine learning model, along with a data application that utilizes the latest deployed model for business consumption.
+
+The pipeline can be deployed to the cloud, scale according to needs, and ensure tracking of parameters and data through every pipeline run. It includes raw data input, features, results, the machine learning model and parameters, and prediction outputs. ZenML simplifies building such a pipeline effectively.
+
+## System Requirements
 - Linux or macOS.
-## 🐍 Python Requirements
+
+## Python Requirements
 
 ### Install Dependencies
 
 1. Clone the project repository and navigate to the project directory:
 
    ```bash
-   git clone https://github.com/zenml-io/zenml-projects.git
-   cd zenml-projects
+   git clone https://github.com/Vbhanusai/mlops_delivery_time_prediction.git
+   cd mlops_delivery_time_prediction
    ```
 
 2. Install the required packages:
@@ -102,9 +91,9 @@ Below are the evaluation metrics for different models tested during this project
 3. Configure a ZenML stack with MLflow experiment tracker and model deployer:
 
    ```bash
-   zenml experiment-tracker register mlflow_tracker --flavor=mlflow
-   zenml model-deployer register mlflow --flavor=mlflow
-   zenml stack register mlflow_stack -a default -o default -d mlflow -e mlflow_tracker --set
+   zenml experiment-tracker register <TRACKER NAME> --flavor=mlflow
+   zenml model-deployer register <MODEL DEPLOYER> --flavor=mlflow
+   zenml stack register <STACK NAME> -a default -o default -d <MODEL DEPLOYER> -e <TRACKER NAME> --set
    ```
 
 
@@ -133,40 +122,54 @@ Run **zenml server** to view pipeline DAG
 zenml login --local --blocking
 ```
 
-_In the sidebar open pipelines and click on training_pipeline, in that click the recent one_
+_This will open the browser automatically. In the sidebar, open pipelines and click on the training pipeline. From there, click on the most recent one._
 
 ![Training Pipeline](_assets/training_pipeline_DAG.png)
 _Training Pipeline_
+
+
 ### Deployment Pipeline
 
 The deployment pipeline extends the training pipeline with additional steps:
 
 1. **`deployment_trigger`**: Checks if the trained model meets deployment criteria (R2 Score threshold).
+
 2. **`model_deployer`**: Deploys the model as a service using MLflow if the criteria are met.
 
-Run the **training pipeline**:
+Run the **Deployment pipeline**:
+
 ```bash
-python run_pipeline.py
+python run_deployment.py
 ```
 
-_You can also pass aditional arguments like --config deploy or --config predict_
+_You can also pass additional arguments, such as --config deploy or --config predict._
 
 Run **zenml server** to view pipeline DAG
+
 ```bash
 zenml login --local --blocking
 ```
 
 
 ![Continuous Deployment DAG](./_assets/continuous_deployment_DAG.png)
+
 _Continuous Deployment DAG_
 
 ![Inference Pipeline DAG](./_assets/inference_pipeline_DAG.png)
+
 _Inference Pipeline DAG_
 
+
+## MLFlow
 ZenML's MLflow integration logs hyperparameters, trained models, and evaluation metrics into the MLflow backend. The pipeline launches a local MLflow deployment server to serve the latest model if it meets the accuracy threshold.
+    
+```bash 
+mlflow ui --backend-store-uri <TRACKING URI>
+``` 
 
 ![MLFlow log data](_assets/MLFlow_log_data.png)
 _MLFlow log data_
+
 ## Demo Streamlit App
 
 To run the Streamlit app locally:
@@ -176,4 +179,5 @@ streamlit run streamlit_app.py
 ```
 
 ![streamlit UI](_assets/streamlit_UI.png)
+
 _streamlit UI_
